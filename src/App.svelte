@@ -5,5 +5,12 @@
 
 <main>
 	<h1>Hello {name}!</h1>
-	<Quiz quizName="New Quiz" />
+	<h4>I'm an h4!!</h4>
+	<Quiz />
 </main>
+
+<style>
+	:global(h4) {
+		color: green;
+	}
+</style>
