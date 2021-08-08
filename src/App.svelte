@@ -5,7 +5,6 @@
 
 <main>
 	<h1>Hello {name}!</h1>
-	<h4>I'm an h4!!</h4>
 	<Quiz />
 </main>
 
