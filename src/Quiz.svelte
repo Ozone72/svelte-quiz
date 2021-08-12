@@ -26,6 +26,15 @@
   function addToScore() {
     score = score + 1;
   }
+
+  // // this is a svelte a reactive statement
+  // $: if (score < 4) {
+  //   alert("Watch more movies and try again.");
+  //   resetQuiz();
+  // }
+
+  // // reactive declaration
+  // $: questionNumber = activeQuestion + 1;
 </script>
 
 <div>
