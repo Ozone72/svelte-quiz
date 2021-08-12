@@ -12,16 +12,13 @@
     return quiz;
   }
 
-  function handleClick() {
-    quiz = getQuiz();
-  }
-
   function nextQuestion() {
     activeQuestion = activeQuestion + 1;
   }
 
   function resetQuiz() {
     score = 0;
+    quiz = getQuiz();
   }
 
   function addToScore() {
@@ -30,7 +27,7 @@
 </script>
 
 <div>
-  <button on:click={handleClick}>Start New Quiz</button>
+  <button on:click={resetQuiz}>Start New Quiz</button>
 
   <h3>My Score: {score}</h3>
   <h4>Question #{activeQuestion}</h4>

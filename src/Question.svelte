@@ -38,6 +38,10 @@
   function checkQuestion(correct) {
     isAnswered = true;
     isCorrect = correct;
+    // adds to score variable if is correct
+    if (correct) {
+      addToScore();
+    }
   }
 </script>
 
