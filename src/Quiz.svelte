@@ -1,4 +1,5 @@
 <script>
+  import { fly } from "svelte/transition";
   import Question from "./Question.svelte";
   let activeQuestion = 1;
   let score = 0;
@@ -37,8 +38,16 @@
   {:then data}
     {#each data.results as question, index}
       {#if index === activeQuestion}
-        <Question {addToScore} {nextQuestion} {question} />
+        <div in:fly={{ x: 100 }} out:fly={{ x: -200 }} class="fade-wrapper">
+          <Question {addToScore} {nextQuestion} {question} />
+        </div>
       {/if}
     {/each}
   {/await}
 </div>
+
+<style>
+  .fade-wrapper {
+    position: absolute;
+  }
+</style>
