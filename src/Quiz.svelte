@@ -19,6 +19,7 @@
 
   function resetQuiz() {
     score = 0;
+    activeQuestion = 0;
     quiz = getQuiz();
   }
 
