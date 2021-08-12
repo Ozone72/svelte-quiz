@@ -1,5 +1,7 @@
 <script>
   export let question;
+  export let nextQuestion;
+  export let addToScore;
 
   let answers = question.incorrect_answers.map((answer) => {
     return {
@@ -39,20 +41,27 @@
   }
 </script>
 
-<h3>{@html question.question}</h3>
+<div>
+  <h3>{@html question.question}</h3>
 
-{#if isAnswered}
-  <h4>
-    {#if isCorrect}
-      You got it right!
-    {:else}
-      WRONG!
-    {/if}
-  </h4>
-{/if}
+  {#if isAnswered}
+    <h5>
+      {#if isCorrect}
+        You got it right!
+      {:else}
+        WRONG!
+      {/if}
+    </h5>
+  {/if}
 
-{#each allAnswers as answer}
-  <button on:click={() => checkQuestion(answer.correct)}
-    >{@html answer.answer}
-  </button>
-{/each}
+  {#each allAnswers as answer}
+    <button disabled={isAnswered} on:click={() => checkQuestion(answer.correct)}
+      >{@html answer.answer}
+    </button>
+  {/each}
+</div>
+<div>
+  {#if isAnswered}
+    <button on:click={nextQuestion}>Next Question</button>
+  {/if}
+</div>
