@@ -27,21 +27,22 @@
     score = score + 1;
   }
 
-  // // this is a svelte a reactive statement
-  // $: if (score < 4) {
-  //   alert("Watch more movies and try again.");
-  //   resetQuiz();
-  // }
+  // this is a svelte a reactive statement
+  $: if (score > 7) {
+    alert("Not too bad Ebert!");
+    resetQuiz();
+  }
 
-  // // reactive declaration
-  // $: questionNumber = activeQuestion + 1;
+  // reactive declaration
+  $: questionNumber = activeQuestion + 1;
 </script>
 
+<!--  -->
 <div>
   <button on:click={resetQuiz}>Start New Quiz</button>
 
   <h3>My Score: {score}</h3>
-  <h4>Question #{activeQuestion}</h4>
+  <h4>Question #{questionNumber}</h4>
 
   {#await quiz}
     Loading...
