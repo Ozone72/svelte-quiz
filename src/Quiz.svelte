@@ -1,7 +1,7 @@
 <script>
   import { fly } from "svelte/transition";
   import Question from "./Question.svelte";
-  let activeQuestion = 1;
+  let activeQuestion = 0;
   let score = 0;
   let quiz = getQuiz();
 
