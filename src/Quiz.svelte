@@ -1,9 +1,26 @@
 <script>
   import { fly } from "svelte/transition";
+  import { onMount, beforeUpdate, afterUpdate, onDestroy } from "svelte";
   import Question from "./Question.svelte";
   let activeQuestion = 0;
   let score = 0;
   let quiz = getQuiz();
+
+  onMount(() => {
+    console.log("I mounted. Would mount again.");
+  });
+
+  beforeUpdate(() => {
+    console.log("before update, I will destroy you.");
+  });
+
+  afterUpdate(() => {
+    console.log("after update, I will attain glory.");
+  });
+
+  onDestroy(() => {
+    console.log("Well, let's go again!");
+  });
 
   async function getQuiz() {
     const res = await fetch(
