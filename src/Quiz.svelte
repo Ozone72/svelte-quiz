@@ -54,8 +54,8 @@
   $: questionNumber = activeQuestion + 1;
 </script>
 
-<!--  -->
 <div>
+  <!-- could use the once event directive to only allow a new quiz if the current question > 10 -->
   <button on:click={resetQuiz}>Start New Quiz</button>
 
   <h3>My Score: {score}</h3>
