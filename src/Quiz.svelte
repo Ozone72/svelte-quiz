@@ -2,6 +2,7 @@
   import { fly } from "svelte/transition";
   import { onMount, beforeUpdate, afterUpdate, onDestroy } from "svelte";
   import Question from "./Question.svelte";
+  import Modal from "./Modal.svelte";
   let activeQuestion = 0;
   let score = 0;
   let quiz = getQuiz();
@@ -73,6 +74,12 @@
     {/each}
   {/await}
 </div>
+
+<Modal>
+  <h2>You won!</h2>
+  <p>Congratulations!</p>
+  <button>Start Over</button>
+</Modal>
 
 <style>
   .fade-wrapper {
