@@ -4,7 +4,6 @@
 
 <div class="modal-bg" transition:fade>
   <div class="modal" transition:fly={{ y: -100 }}>
-    <button>Close</button>
     <!-- <slot>optional fallback</slot> -->
     <slot />
     <!-- <slot name="modal" /> -->
