@@ -1,12 +1,13 @@
 <script>
+  import { fly, fade } from "svelte/transition";
 </script>
 
-<div class="modal-bg">
-  <div class="modal">
-    <button on:click>Close</button>
-    <!-- <slot>optional fallback</slot> -->
+<div class="modal-bg" transition:fade>
+  <div class="modal" transition:fly={{ y: -100 }}>
+    <button>Close</button>
     <!-- <slot>optional fallback</slot> -->
     <slot />
+    <!-- <slot name="modal" /> -->
   </div>
 </div>
 
@@ -19,6 +20,7 @@
     bottom: 0;
     background: rgba(0, 0, 0, 0.8);
   }
+
   .modal {
     background: white;
     padding: 20px;

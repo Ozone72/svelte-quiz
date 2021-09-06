@@ -1,28 +1,12 @@
 <script>
   import { fly } from "svelte/transition";
-  import { onMount, beforeUpdate, afterUpdate, onDestroy } from "svelte";
+  // import { onMount, beforeUpdate, afterUpdate, onDestroy } from "svelte";
   import Question from "./Question.svelte";
   import Modal from "./Modal.svelte";
   let activeQuestion = 0;
   let score = 0;
   let quiz = getQuiz();
   let isModalOpen = false;
-
-  onMount(() => {
-    console.log("I mounted. Would mount again.");
-  });
-
-  beforeUpdate(() => {
-    console.log("before update, I will destroy you.");
-  });
-
-  afterUpdate(() => {
-    console.log("after update, I will attain glory.");
-  });
-
-  onDestroy(() => {
-    console.log("Well, let's go again!");
-  });
 
   async function getQuiz() {
     const res = await fetch(
@@ -48,7 +32,7 @@
   }
 
   // this is a svelte a reactive statement
-  $: if (score > 0) {
+  $: if (score > 3) {
     isModalOpen = true;
   }
 
@@ -79,7 +63,7 @@
 {#if isModalOpen}
   <Modal>
     <h2>You won!</h2>
-    <p>Congratulations!</p>
+    <p>You're a true cinephile</p>
     <button on:click={resetQuiz}>Start Over</button>
   </Modal>
 {/if}

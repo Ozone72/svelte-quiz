@@ -36,48 +36,49 @@
   shuffle(allAnswers);
 
   function checkQuestion(correct) {
-    isAnswered = true;
-    isCorrect = correct;
-    // adds to score variable if is correct
-    if (correct) {
-      addToScore();
+    if (!isAnswered) {
+      isAnswered = true;
+      isCorrect = correct;
+      // adds to score variable if is correct
+      if (correct) {
+        addToScore();
+      }
     }
   }
 </script>
 
-<div>
-  <h3>{@html question.question}</h3>
+<h3>{@html question.question}</h3>
 
-  {#if isAnswered}
-    <!-- <h5 class={isCorrect ? "correct" : "wrong"}> -->
-    <!-- <h5 class:correct={isCorrect}> -->
-    <h5 class:isCorrect>
-      {#if isCorrect}
-        You got it right!
-      {:else}
-        WRONG!
-      {/if}
-    </h5>
-  {/if}
+{#if isAnswered}
+  <!-- <h5 class={isCorrect ? "correct" : "wrong"}> -->
+  <!-- <h5 class:correct={isCorrect}> -->
+  <h5 class:isCorrect class:isWrong={!isCorrect}>
+    {#if isCorrect}
+      You got it right!
+    {:else}
+      Wrong answer! I'll pop the popcorn...
+    {/if}
+  </h5>
+{/if}
 
-  {#each allAnswers as answer}
-    <button disabled={isAnswered} on:click={() => checkQuestion(answer.correct)}
-      >{@html answer.answer}
-    </button>
-  {/each}
-</div>
-<div>
-  {#if isAnswered}
+{#each allAnswers as answer}
+  <button disabled={isAnswered} on:click={() => checkQuestion(answer.correct)}
+    >{@html answer.answer}
+  </button>
+{/each}
+
+{#if isAnswered}
+  <div>
     <button on:click={nextQuestion}>Next Question</button>
-  {/if}
-</div>
+  </div>
+{/if}
 
 <style>
-  h5 {
+  h5.isWrong {
     color: red;
   }
 
   h5.isCorrect {
-    color: purple;
+    color: green;
   }
 </style>
