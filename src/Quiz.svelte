@@ -61,7 +61,8 @@
 </div>
 
 {#if isModalOpen}
-  <Modal>
+  <!-- Here is where the custom component event 'close' is triggered -->
+  <Modal on:close={resetQuiz}>
     <h2>You won!</h2>
     <p>You're a true cinephile</p>
     <button on:click={resetQuiz}>Start Over</button>
