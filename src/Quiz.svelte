@@ -6,6 +6,7 @@
   let activeQuestion = 0;
   let score = 0;
   let quiz = getQuiz();
+  let isModalOpen = false;
 
   onMount(() => {
     console.log("I mounted. Would mount again.");
@@ -36,6 +37,7 @@
   }
 
   function resetQuiz() {
+    isModalOpen = false;
     score = 0;
     activeQuestion = 0;
     quiz = getQuiz();
@@ -46,9 +48,8 @@
   }
 
   // this is a svelte a reactive statement
-  $: if (score > 7) {
-    alert("Not too bad Ebert!");
-    resetQuiz();
+  $: if (score > 0) {
+    isModalOpen = true;
   }
 
   // reactive declaration
@@ -75,11 +76,13 @@
   {/await}
 </div>
 
-<Modal>
-  <h2>You won!</h2>
-  <p>Congratulations!</p>
-  <button>Start Over</button>
-</Modal>
+{#if isModalOpen}
+  <Modal>
+    <h2>You won!</h2>
+    <p>Congratulations!</p>
+    <button on:click={resetQuiz}>Start Over</button>
+  </Modal>
+{/if}
 
 <style>
   .fade-wrapper {

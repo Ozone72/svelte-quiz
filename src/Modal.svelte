@@ -3,7 +3,7 @@
 
 <div class="modal-bg">
   <div class="modal">
-    <button>Close</button>
+    <button on:click>Close</button>
     <!-- <slot>optional fallback</slot> -->
     <!-- <slot>optional fallback</slot> -->
     <slot />
